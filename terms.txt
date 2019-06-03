@@ -1,0 +1,128 @@
+Here is a file with the terms used in the documentation.
+Since Python is not typed, sometimes it is helpful to know the form of particular terms.
+The term "usually" means that it's almost always this way, but that the program isn't dependent on it.
+
+board:
+    form:
+        Board object
+    description:
+        The model of a River Crossing puzzle in-progress.
+        Keeps track of what pegs and planks are on the board, what plank is being carried, where the person is, and where the finish is.
+
+direction:
+    form:
+        integer
+        Usually in the range [0, 3] (inclusive)
+    description:
+        0: up
+        1: right
+        2: down
+        3: left
+
+        Signifies a direction.
+
+distance:
+    form:
+        integer
+    description:
+        The distance between two pegs is the Manhattan distance between them if they are in the same row or column.
+        If they are not in the same row or column, the distance between them is undefined.
+        This is because planks and walk moves only occur within the same row or column.
+
+held plank:
+    form:
+        integer
+        Usually in the range [1, 3] (inclusive).
+    description:
+        A held plank is only good for placing, and the only thing we care about when placing is the plank's length.
+        Therefore, a held plank is merely the length of the plank that was grabbed
+        Planks in River Crossing only have a maximum length of 3, thus the range.
+
+letter:
+    form:
+        string
+        Usually a character or number
+    description:
+        River Crossing solution strings contain many letters
+
+move:
+    form:
+        (move type, peg)
+    description:
+        There are three things you can do in River Crossing:
+            Walk somewhere
+            Grab a plank
+            Place a plank
+
+        If the move is a walk move, executing the move should have the person move to the peg.
+        If the move is a grab move, executing the move should have the person pick up the plank between them and the peg.
+        If the move is a place move, executing the move should have the person place their held plank between themselves and the peg.
+
+move type:
+    form:
+        string
+        Either 'walk' or 'grab' or 'place'.
+
+peg:
+    form:
+        integer
+        Usually in the range [1, 35] (inclusive).
+    description:
+        A slot on the board.
+        The pegs are labeled left-to-right, top-to-bottom (like you're reading) starting at 1.
+        This means the top-left is 1, the top-right is 5, the the bottom-left is 31, and the bottom-right is 35.
+
+plank:
+    form:
+        (peg1, peg2)
+        where peg1 and peg2 are pegs, and peg1 < peg2.
+    description:
+        A plank between two pegs.
+
+puzzle:
+    form:
+        Board object
+    description:
+        Puzzles used to be different than Boards, but now they're the same, and they're all called Boards.
+        It didn't really make sense to have a separate Puzzle class just for one `finish` property that could just be set to `None` on a board.
+
+RC:
+    description:
+        Short for "River Crossing"
+
+RC character:
+    description:
+        River Crossing solution character
+
+River Crossing solution character:
+    form:
+        string
+        len == 1
+    description:
+        A character from a River Crossing solution string.
+        These may be number strings as well, since the solutions also use numbers.
+        (For example, '3' is a number string.)
+
+River Crossing solution string:
+    form:
+        string
+        Usually in the exact format of the solutions given in the River Crossing booklet.
+        For example: 'UX-IX GI-GQ GQ-4Q QR-34'
+
+    description:
+        How the game itself gives solutions.
+        Usually you need a translator dictionary to convert between their numbers and letters and the peg numbers,
+        ...if you want to convert a solution given by this code into a solution that looks like this.
+
+solution:
+    form:
+        list of moves
+    description:
+        This is a list of moves that will solve a puzzle.
+
+translator:
+    form:
+        dictionary
+        Either {River Crossing solution character: peg} or {peg: River Crossing solution character}
+    description:
+        Dictionary that converts pegs into River Crossing solution characters or vice versa.
