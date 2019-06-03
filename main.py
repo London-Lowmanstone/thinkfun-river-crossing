@@ -4,7 +4,7 @@ See terms.txt for definitions and explanations.
 '''
 
 if __name__ == "__main__":
-    # pylint doesn't like the face that my variables are lowercase here
+    # pylint doesn't like the fact that my variables are lowercase here
     # pylint: disable=invalid-name
     from solvers import BFSSolver
     from puzzles import Expert39, Expert40, EXPERT40_TRANSLATOR, EXPERT40_SOLUTION
