@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     my_stepper = SolutionStepper(Expert40, rc_solution,
                                  invert_dictionary(EXPERT40_TRANSLATOR))
-    # the puzzle after 5 RC moves
+    # the puzzle after 26 RC moves
     my_puzzle_after_moves = my_stepper.get_puzzle_at_step(26)
     print("The board after 26 moves of my solution: {}".format(my_puzzle_after_moves))
 
