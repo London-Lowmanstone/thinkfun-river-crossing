@@ -1,3 +1,4 @@
+#!/usr/local/bin/python3
 '''
 Main program to show how to use this.
 See terms.txt for definitions and explanations.
