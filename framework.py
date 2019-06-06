@@ -63,7 +63,7 @@ class Board:
     def __hash__(self) -> int:
         return hash(self.person_position) + hash(tuple(self.planks))
 
-    def __deepcopy__(self, memo: Dict[int, object]) -> object:
+    def __deepcopy__(self, memo: Dict[int, object]) -> 'Board':
         # ignoring `memo` as per https://stackoverflow.com/a/1950593/
         return Board(self.person_position, self.finish, self.pegs.copy(),
                      self.planks.copy(), self.held_plank)
