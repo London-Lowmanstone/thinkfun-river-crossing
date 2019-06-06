@@ -8,7 +8,7 @@ See terms.txt for the types of the different terms.
 
 WIDTH = 5
 HEIGHT = 7
-UP, RIGHT, DOWN, LEFT = [0, 1, 2, 3]
+UP, RIGHT, DOWN, LEFT = 0, 1, 2, 3
 
 class Board:
     '''
