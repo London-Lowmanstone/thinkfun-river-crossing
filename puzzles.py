@@ -17,21 +17,21 @@ EXPERT40_SOLUTION = ('UX-IX GI-GQ GQ-4Q QR-34 34-3K AK-KM 3K-MR KM-CM MR-QR 4Q-G
 # upgrade: use the `super` function
 class SimplePuzzle(Board):
     '''A very simple puzzle for testing'''
-    def __init__(self):
-        Board.__init__(self, 1, 7, [1, 6, 7], [(1, 6), (6, 7)])
+    def __init__(self) -> None:
+        super().__init__(1, 7, [1, 6, 7], [(1, 6), (6, 7)])
 
 class EasyMovePuzzle(Board):
     '''
     Another very simple puzzle for testing.
     Requires plank movement.
     '''
-    def __init__(self):
-        Board.__init__(self, 1, 7, [1, 6, 7], [(1, 6)])
+    def __init__(self) -> None:
+        super().__init__(1, 7, [1, 6, 7], [(1, 6)])
 
 # upgrade: the puzzles from River Crossing have a lot of duplicate code setup
 class Beginner1(Board):
     '''Puzzle from River Crossing'''
-    def __init__(self):
+    def __init__(self) -> None:
         start, end = 32, 4
         pegs = [4, 14, 13, 23, 22, 32]
         planks = [(32, 22), (22, 23)]
@@ -46,11 +46,11 @@ class Beginner1(Board):
             assert peg1 in pegs
             assert peg2 in pegs
 
-        Board.__init__(self, start, end, pegs, planks)
+        super().__init__(start, end, pegs, planks)
 
 class Intermediate13(Board):
     '''Puzzle from River Crossing'''
-    def __init__(self):
+    def __init__(self) -> None:
         start, end = 27, 15
         pegs = [7, 9, 15, 13, 11, 17, 27, 19, 24, 23, 21]
         planks = [(27, 17), (23, 13), (24, 19)]
@@ -65,11 +65,11 @@ class Intermediate13(Board):
             assert peg1 in pegs
             assert peg2 in pegs
 
-        Board.__init__(self, start, end, pegs, planks)
+        super().__init__(start, end, pegs, planks)
 
 class Expert31(Board):
     '''Puzzle from River Crossing'''
-    def __init__(self):
+    def __init__(self) -> None:
         start, end = 16, 20
         pegs = [16, 20, 18, 1, 4, 7, 8, 14, 22, 28, 29, 34, 31, 32]
         planks = [(31, 16), (28, 29), (4, 14), (7, 22)]
@@ -84,11 +84,11 @@ class Expert31(Board):
             assert peg1 in pegs
             assert peg2 in pegs
 
-        Board.__init__(self, start, end, pegs, planks)
+        super().__init__(start, end, pegs, planks)
 
 class Expert39(Board):
     '''Puzzle from River Crossing'''
-    def __init__(self):
+    def __init__(self) -> None:
         start, end = 34, 3
         pegs = [3, 7, 9, 11, 12, 15, 18, 20, 21, 24, 26, 28, 34]
         planks = [(34, 24), (24, 9), (9, 7), (7, 12)]
@@ -103,11 +103,11 @@ class Expert39(Board):
             assert peg1 in pegs
             assert peg2 in pegs
 
-        Board.__init__(self, start, end, pegs, planks)
+        super().__init__(start, end, pegs, planks)
 
 class Expert40(Board):
     '''Puzzle from River Crossing'''
-    def __init__(self):
+    def __init__(self) -> None:
         start, end = 30, 1
         pegs = [1, 4, 8, 9, 12, 15, 16, 18, 19, 21, 22, 24, 26, 28, 30, 32, 33, 34]
         planks = [(30, 15), (24, 19), (26, 28), (22, 12), (8, 9)]
@@ -122,4 +122,4 @@ class Expert40(Board):
             assert peg1 in pegs
             assert peg2 in pegs
 
-        Board.__init__(self, start, end, pegs, planks)
+        super().__init__(start, end, pegs, planks)

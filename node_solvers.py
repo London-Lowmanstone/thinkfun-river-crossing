@@ -1,12 +1,23 @@
+#!/usr/local/bin/python3
 '''Classes for solving problems that can be modeled as a directed graph with goal nodes'''
 
-# pylint: disable=too-few-public-methods, no-else-return
+# pylint: disable=too-few-public-methods
 from collections import deque
+from typing import Callable, Iterable, List, Deque, Tuple, Dict, Optional, Hashable, Generic, TypeVar # pylint: disable=line-too-long
 
+# pylint: disable=invalid-name
+# Type definitions
+GenericInfo = TypeVar('GenericInfo')
+GenericName = TypeVar('GenericName', bound=Hashable)
+GenericMove = TypeVar('GenericMove')
+# pylint: enable=invalid-name
 
-class NodeSolver:
+class NodeSolver(Generic[GenericInfo, GenericName, GenericMove]):
     '''Class for modeling problems that can be modeled as a directed graph with goal nodes'''
-    def __init__(self, namer, detector, expander, follower):
+    def __init__(self, namer: Callable[[GenericInfo], GenericName],
+                 detector: Callable[[GenericInfo], bool],
+                 expander: Callable[[GenericInfo], Iterable[GenericMove]],
+                 follower: Callable[[GenericInfo, GenericMove], GenericInfo]):
         '''
         Whatever decides to use this gets to define what structure info is.
         namer: takes info representing a node and returns a hashable object (the name);
@@ -24,9 +35,9 @@ class NodeSolver:
         self.follow_move = follower
 
 
-class BFSSolver(NodeSolver):
+class BFSSolver(NodeSolver[GenericInfo, GenericName, GenericMove]):
     '''Class for solving node problems with breadth-first-search to reach the goal node'''
-    def solve(self, start_info):
+    def solve(self, start_info: GenericInfo) -> Optional[List[GenericMove]]:
         '''
         Returns the list of moves needed to reach the goal node
         ...from the node represented by the parameter.
@@ -38,8 +49,8 @@ class BFSSolver(NodeSolver):
         start_name = self.get_name(start_info)
 
         # data is in the form (info, path)
-        name_to_data = {start_name: (start_info, [])}
-        queue = deque()
+        name_to_data: Dict[GenericName, Tuple[GenericInfo, List[GenericMove]]] = {start_name: (start_info, [])} # pylint: disable=line-too-long
+        queue: Deque[GenericName] = deque()
 
         queue.appendleft(start_name)
 

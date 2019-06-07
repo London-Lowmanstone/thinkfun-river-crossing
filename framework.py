@@ -26,7 +26,7 @@ class Board:
     '''
     Represents a River Crossing board
     '''
-    def __init__(self, start: Peg, finish: Peg, pegs: Set[Peg], planks: Set[Plank],
+    def __init__(self, start: Peg, finish: Peg, pegs: Iterable[Peg], planks: Iterable[Plank],
                  held_plank: HeldPlank = None):
         # the starting position of the person
         self.person_position = start

@@ -10,7 +10,8 @@ if __name__ == "__main__":
     from solvers import BFSSolver
     from puzzles import Expert39, Expert40, EXPERT40_TRANSLATOR, EXPERT40_SOLUTION
     from util import convert_to_rc_solution, SolutionStepper, invert_dictionary
-    puzzle = Expert39()
+    from framework import Board
+    puzzle: Board = Expert39()
     solver = BFSSolver()
     solution = solver.solve(puzzle)
     print("Solution to Expert Puzzle #39: {}".format(solution))
@@ -19,6 +20,7 @@ if __name__ == "__main__":
     solver = BFSSolver()
     # this takes around 10 seconds on my computer
     solution = solver.solve(puzzle)
+    assert solution
     print("Solution to Expert Puzzle #40: {}".format(solution))
     # solving the puzzle does not edit the puzzle,
     # ...so we can get the starting position from it.
@@ -44,7 +46,7 @@ if __name__ == "__main__":
     # determine at what step my solution and the real solution diverge
     # note that you can also determine this just by looking at the solution strings
     # ...but this provides more of a tutorial
-    my_puzzle_after_moves, real_puzzle_after_moves = None, None
+    my_puzzle_after_moves, real_puzzle_after_moves = None, None # type: ignore
     diverge_step = -1
     while my_puzzle_after_moves == real_puzzle_after_moves:
         diverge_step += 1
