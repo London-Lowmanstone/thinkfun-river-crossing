@@ -1,5 +1,5 @@
 Here is a file with the terms used in the documentation.
-Since Python is not typed, sometimes it is helpful to know the form of particular terms.
+Since Python is often not typed, sometimes it is helpful to know the form of particular terms.
 The term "usually" means that it's almost always this way, but that the program isn't dependent on it.
 
 board:
